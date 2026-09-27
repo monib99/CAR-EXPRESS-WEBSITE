@@ -13,36 +13,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="favicon.png">
+<link rel="shortcut icon" href="images/favicon.png">
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
 <!-- flaticon -->
-<link rel="stylesheet" type="text/css" href="flaticon.css" />
+<link rel="stylesheet" type="text/css" href="css/flaticon.css" />
 
 <!-- mega menu -->
-<link rel="stylesheet" type="text/css" href="mega_menu.css" />
+<link rel="stylesheet" type="text/css" href="css/mega-menu/mega_menu.css" />
 
 <!-- font awesome -->
-<link rel="stylesheet" type="text/css" href="font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="all.min.css" />
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="css/all.min.css" />
 
 <!-- owl-carousel -->
-<link rel="stylesheet" type="text/css" href="owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="css/owl-carousel/owl.carousel.css" />
 
 <!-- jquery-ui -->
-<link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 
 <!-- magnific-popup -->
-<link rel="stylesheet" type="text/css" href="magnific-popup.css" />
+<link rel="stylesheet" type="text/css" href="css/magnific-popup/magnific-popup.css" />
 
 <!-- main style -->
-<link rel="stylesheet" type="text/css" href="style.css" />
-<link rel="stylesheet" type="text/css" href="style-new.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style-new.css" />
 
 <!-- responsive -->
-<link rel="stylesheet" type="text/css" href="responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
 
 
 <script>
@@ -53,7 +53,7 @@ window.CE = {
   name: "Car Express",
   phone: "01442 000000",
   whatsapp: "447000000000",          // international, no + or spaces
-  email: "hello@carexpress.co.uk",
+  email: "contact@carexpress.co",
   address: ["Fletcher Way", "Hemel Hempstead", "Hertfordshire HP2 5SE"],
   mapsQuery: "Car Express, Fletcher Way, Hemel Hempstead HP2 5SE",
   hours: "Mon - Sat 9:00 - 18:00 &middot; Sun 10:00 - 16:00",
@@ -138,7 +138,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
 
  <div id="loading">
   <div id="loading-center">
-      <img src="loader.gif" alt="">
+      <img src="images/loader.gif" alt="">
  </div>
 </div>
 
@@ -164,16 +164,17 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
                       <!-- menu logo -->
                       <ul class="menu-logo">
                         <li>
-                          <a href="index.html"><img id="logo_img" src="logo-light.png" alt="logo"> </a>
+                          <a href="index.html"><img id="logo_img" src="images/logo-light.png" alt="logo"> </a>
                         </li>
                       </ul>
                       <!-- menu links -->
                       <ul class="menu-links">
-                        <li class="mega-menu-item"><a href="index.html">Home</a></li>
-                        <li class="mega-menu-item"><a href="stock.html">Cars For Sale</a></li>
-                        <li class="mega-menu-item"><a href="about.html">About Us</a></li>
-                        <li class="mega-menu-item"><a href="contact.html">Contact</a></li>
-                      </ul></div>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stock.html">Cars For Sale</a></li>
+          <li><a href="view360.html">360° View</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
                   <div class="header-right">
                         <div class="header-info">
                             <div class="info-icon">
@@ -198,7 +199,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
 
 <!--=================================
  Banner -->
-<section class="banner modern-banner-3 bg-holder bg-overlay-dark-50" style="background-image: url(home3-banner-image.jpg);">
+<section class="banner modern-banner-3 bg-holder bg-overlay-dark-50" style="background-image: url(images/modern-home/bg/home3-banner-image.jpg);">
   <div class="container">
     <div class="row align-items-center" id="ceHeroRow">
      <div class="col-lg-7">
@@ -311,148 +312,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
 
 <!--=================================
 section -->
-<section class="page-section-ptb position-relative bg-gradient-grey">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <div class="search-logo search-logo-style-2">
-          <div id="search-logo-tabs">
-            <div class="tabs-header">
-              <h6>I want Search</h6>
-              <ul class="nav nav-tabs" id="myTab02" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="browse-make-tab" data-bs-toggle="tab" data-bs-target="#browse-make" type="button" role="tab" aria-controls="browse-make" aria-selected="true">Browse Make</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="browse-type-tab" data-bs-toggle="tab" data-bs-target="#browse-type" type="button" role="tab" aria-controls="browse-type" aria-selected="false">Browse Body Style</button>
-                </li>
-              </ul>
-            </div>
-            <div class="tab-content mb-0 mt-0" id="myTabContent03">
-              <div class="tab-pane fade show active" id="browse-make" role="tabpanel" aria-labelledby="browse-make-tab">
-                <div class="row">
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="logo-07.png" alt="">
-                      <strong>Audi</strong>
-                      <span>8</span>
-                    </div>
-                    </a>
-                 </div>
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="logo-01.png" alt="">
-                      <span>2</span>
-                      <strong>Bentley</strong>
-                    </div>
-                    </a>
-                 </div>
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="logo-13.png" alt="">
-                      <span>1</span>
-                      <strong>Bugatti</strong>
-                    </div>
-                    </a>
-                 </div>
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="logo-14.png" alt="">
-                      <span>2</span>
-                      <strong>Ferrari</strong>
-                    </div>
-                    </a>
-                 </div>
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="logo-04.png" alt="">
-                      <span>5</span>
-                      <strong>Ford</strong>
-                    </div>
-                    </a>
-                 </div>
-                 <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                    <a href="#">
-                      <div class="search-logo-box">
-                      <img class="img-fluid center-block" src="15.png" alt="">
-                      <span>7</span>
-                      <strong>Mercedes-Benz</strong>
-                    </div>
-                    </a>
-                 </div>
-              </div>
-              </div>
 
-              <div class="tab-pane fade" id="browse-type" role="tabpanel" aria-labelledby="browse-type-tab">
-                <div class="row">
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-01.png" alt="">
-                        <strong>Convertible</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-02.png" alt="">
-                        <strong>Coupe</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-09.png" alt="">
-                        <strong>Hatchback</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-10.png" alt="">
-                        <strong>Sedan</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-03.png" alt="">
-                        <strong>SUV</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                  <div class="col-lg-2 col-md-4 col-sm-4 col-6">
-                      <a href="#">
-                        <div class="search-logo-box text-center">
-                        <img class="img-fluid center-block" src="body-type-06.png" alt="">
-                        <strong>Truck</strong>
-                        <span>2</span>
-                      </div>
-                      </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-       </div>
-      </div>
-    </div>
-  </div>
-</section>
 <!--=================================
  section -->
 
@@ -483,52 +343,7 @@ section -->
 
  <!--=================================
  Counter -->
-<section class="counter counter-style-2 my-0 my-sm-4">
-  <div class="container">
-    <div class="row theme-bg counter-box m-0">
-     <div class="col-lg-3 col-sm-6 item">
-      <div class="counter-block text-start">
-        <div class="separator"></div>
-          <div class="info">
-             <h6 class="text-white">Vehicles In Stock</h6>
-             <i class="glyph-icon flaticon-beetle"></i>
-             <b class="timer text-white" data-to="561" data-speed="10000"></b>
-           </div>
-         </div>
-     </div>
-     <div class="col-lg-3 col-sm-6 item">
-      <div class="counter-block text-start">
-        <div class="separator"></div>
-        <div class="info">
-           <h6 class="text-white">Dealer Reviews</h6>
-           <i class="glyph-icon flaticon-interface"></i>
-           <b class="timer text-white" data-to="856" data-speed="10000"></b>
-         </div>
-       </div>
-     </div>
-     <div class="col-lg-3 col-sm-6 item">
-      <div class="counter-block text-start mb-4 mb-sm-0">
-        <div class="separator"></div>
-        <div class="info">
-           <h6 class="text-white">Happy Customer</h6>
-           <i class="glyph-icon flaticon-circle"></i>
-           <b class="timer text-white" data-to="789" data-speed="10000"></b>
-         </div>
-       </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 item">
-      <div class="counter-block text-start mb-0">
-        <div class="separator"></div>
-         <div class="info">
-           
-           <i class="glyph-icon flaticon-cup"></i>
-           <b class="timer text-white" data-to="356" data-speed="10000"></b>
-         </div>
-        </div>
-     </div>
-    </div>
-  </div>
-</section>
+
  <!--=================================
  Counter -->
 
@@ -557,25 +372,25 @@ clients -->
      <div class="col-lg-12 col-md-12">
       <div class="owl-carousel our-clients-carousel" data-nav-dots="false" data-items="5" data-md-items="5" data-sm-items="3" data-xs-items="2" data-space="10">
           <div class="item">
-            <img class="img-fluid center-block" src="clients-01.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-01.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-02.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-02.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-03.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-03.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-04.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-04.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-05.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-05.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-06.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-06.png" alt="">
           </div>
           <div class="item">
-            <img class="img-fluid center-block" src="clients-07.png" alt="">
+            <img class="img-fluid center-block" src="images/modern-home/clients/clients-07.png" alt="">
           </div>
        </div>
      </div>
@@ -588,7 +403,7 @@ clients -->
 
  <!--=================================
 Solution & Services -->
-<section class="section-ptb bg-holder bg-overlay-dark-80 position-relative" style="background-image: url(video-bg-image.jpg);">
+<section class="section-ptb bg-holder bg-overlay-dark-80 position-relative" style="background-image: url(images/modern-home/bg/video-bg-image.jpg);">
  <div class="container">
     <div class="row justify-content-start">
      <div class="col-md-7">
@@ -616,120 +431,7 @@ Have Any Question -->
 <!--=================================
  latest news -->
 
-<section class="latest-blog section-ptb">
-  <div class="container">
-   <div class="row justify-content-center">
-    <div class="col-md-8">
-    <div class="section-title-new text-center">
-      <h2 class="main-title">Our Recent News & Articles</h2>
-      <p>Small economical cars, family cars and SUVs — fully prepared before they reach the forecourt. Part exchange welcome, free delivery within 50 miles.</p>
-    </div>
-    </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-        <div class="owl-carousel carousel-arrow-new" data-nav-arrow="true" data-items="3" data-md-items="3" data-sm-items="2" data-xs-items="2" data-space="30">
-          <div class="item">
-              <div class="blog-post-new blog-post-1">
-                <div class="blog-post-image">
-                  <div class="post-thumb">
-                    <img class="img-fluid" src="blog-img-1.jpg" alt="">
-                  </div>
-                  <div class="entry-date">
-                    <span class="day">17</span>
-                    <span class="month">May</span>
-                  </div>
-                </div>
-                <div class="blog-post-content">
-                  <div class="post-category">
-                    <a href="#">Uncategorized</a>
-                  </div>
-                  <h3 class="post-title">
-                    <a href="#">Does Your Life Lack Meaning</a>
-                  </h3>
-                  <div class="post-btn">
-                    <a class="read-link" href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="item">
-          <div class="blog-post-new blog-post-1">
-            <div class="blog-post-image">
-              <div class="post-thumb">
-                <img class="img-fluid" src="blog-img-2.jpg" alt="">
-              </div>
-              <div class="entry-date">
-                <span class="day">17</span>
-                <span class="month">May</span>
-              </div>
-            </div>
-            <div class="blog-post-content">
-              <div class="post-category">
-                <a href="#">Uncategorized</a>
-              </div>
-              <h3 class="post-title">
-                <a href="#">Does Your Life Lack Meaning</a>
-              </h3>
-              <div class="post-btn">
-                <a class="read-link" href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-              </div>
-            </div>
-          </div>
-          </div>
-          <div class="item">
-             <div class="blog-post-new blog-post-1">
-                <div class="blog-post-image">
-                  <div class="post-thumb">
-                    <img class="img-fluid" src="blog-img-3.jpg" alt="">
-                  </div>
-                  <div class="entry-date">
-                    <span class="day">17</span>
-                    <span class="month">May</span>
-                  </div>
-                </div>
-                <div class="blog-post-content">
-                  <div class="post-category">
-                    <a href="#">Uncategorized</a>
-                  </div>
-                  <h3 class="post-title">
-                    <a href="#">Does Your Life Lack Meaning</a>
-                  </h3>
-                  <div class="post-btn">
-                    <a class="read-link" href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="item">
-            <div class="blog-post-new blog-post-1">
-                <div class="blog-post-image">
-                  <div class="post-thumb">
-                    <img class="img-fluid" src="blog-img-4.jpg" alt="">
-                  </div>
-                  <div class="entry-date">
-                    <span class="day">17</span>
-                    <span class="month">May</span>
-                  </div>
-                </div>
-                <div class="blog-post-content">
-                  <div class="post-category">
-                    <a href="#">Uncategorized</a>
-                  </div>
-                  <h3 class="post-title">
-                    <a href="#">Does Your Life Lack Meaning</a>
-                  </h3>
-                  <div class="post-btn">
-                    <a class="read-link" href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-    </div>
-    </div>
-  </div>
-</section>
+
 
 <!--=================================
  latest news -->
@@ -743,7 +445,7 @@ Have Any Question -->
         <div class="col-lg-4 col-md-4 col-sm-4 text-center text-md-start">
           <div class="footer-logo">
             <a href="#">
-              <img class="img-fluid site-logo" src="logo-light.png" alt="">
+              <img class="img-fluid site-logo" src="images/logo-light.png" alt="">
             </a>
           </div>
         </div>
@@ -763,13 +465,13 @@ Have Any Question -->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
           <div class="about-content">
             <h6 class="text-white widgettitle">Contact Information</h6>
-            <p>We provide everything you need to build an amazing dealership.</p>
+            <p>Quality used cars in Hemel Hempstead. Every car serviced, MOT’d and HPI checked before sale.</p>
           </div>
           <div class="address">
             <ul>
-              <li> <i class="fa-solid fa-location-dot"></i><span>1635 Franklin Street Montgomery, Near Sherwood Mall. AL 36104</span> </li>
+              <li> <i class="fa-solid fa-location-dot"></i><span>Fletcher Way, Hemel Hempstead, Hertfordshire HP2 5SE</span> </li>
               <li> <i class="fa fa-phone"></i><span><span class="ce-phone"></span></span> </li>
-              <li> <i class="fa fa-envelope-o"></i><span>support@example.com</span> </li>
+              <li> <i class="fa fa-envelope-o"></i><span><span class="ce-email"></span></span> </li>
             </ul>
           </div>
         </div>
@@ -777,13 +479,7 @@ Have Any Question -->
           <div class="usefull-link widget-link-new">
             <h6 class="text-white widgettitle">Useful Links</h6>
             <ul>
-              <li><a href="#">Change Oil and Filter</a></li>
-              <li><a href="#">Brake Pads Replacement</a></li>
-              <li><a href="#">Timing Belt Replacement</a></li>
-              <li><a href="#">Pre-purchase Car Inspection</a></li>
-              <li><a href="#">Starter Replacement</a></li>
-              <li><a href="#">Air Conditioning</a></li>
-            </ul>
+              <li><a href="index.html">Home</a></li><li><a href="stock.html">Cars For Sale</a></li><li><a href="about.html">About Us</a></li><li><a href="view360.html">360° View</a></li><li><a href="contact.html">Contact</a></li></ul>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
@@ -791,7 +487,7 @@ Have Any Question -->
             <h6 class="text-white widgettitle">recent posts </h6>
             <div class="recent-post">
               <div class="recent-post-image">
-                <img class="img-fluid" src="car-01.jpg" alt="">
+                <img class="img-fluid" src="images/car/01.jpg" alt="">
               </div>
               <div class="recent-post-info">
                 <a href="#">Time to change your </a>
@@ -800,7 +496,7 @@ Have Any Question -->
             </div>
             <div class="recent-post">
               <div class="recent-post-image">
-                <img class="img-fluid" src="car-02.jpg" alt="">
+                <img class="img-fluid" src="images/car/02.jpg" alt="">
               </div>
               <div class="recent-post-info">
                 <a href="#">The best time to </a>
@@ -809,7 +505,7 @@ Have Any Question -->
             </div>
             <div class="recent-post">
               <div class="recent-post-image">
-                <img class="img-fluid" src="car-03.jpg" alt="">
+                <img class="img-fluid" src="images/car/03.jpg" alt="">
               </div>
               <div class="recent-post-info">
                 <a href="#">Replacing a timing </a>
@@ -824,10 +520,10 @@ Have Any Question -->
             <p>Download Our Car Dealer Mobile Application.</p>
             <div class="app-button-items">
                <div class="button-item">
-                  <a class="" href="#"><img class="img-fluid" src="appstore.png" alt=""></a>
+                  <a class="" href="#"><img class="img-fluid" src="images/modern-home/appstore.png" alt=""></a>
                </div>
                <div class="button-item">
-                  <a class="" href="#"><img class="img-fluid" src="google-play-store.png" alt=""></a>
+                  <a class="" href="#"><img class="img-fluid" src="images/modern-home/google-play-store.png" alt=""></a>
                </div>
             </div>
           </div>
@@ -840,7 +536,7 @@ Have Any Question -->
         <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="text-lg-start text-center">
-              <p>©Copyright 2021 Car Dealer Developed by <a class="company-link" href="http://www.potenzaglobalsolutions.com/"  target="_blank">Car Express</a></p>
+              <p>© <span class="ce-year"></span> Car Express. All rights reserved.</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
@@ -863,7 +559,7 @@ Have Any Question -->
  back to top -->
 
 <div class="car-top">
-  <span><img src="car.png" alt=""></span>
+  <span><img src="images/car.png" alt=""></span>
 </div>
 
  <!--=================================
@@ -873,38 +569,38 @@ Have Any Question -->
  jquery -->
 
 <!-- jquery  -->
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 
 <!-- bootstrap -->
-<script type="text/javascript" src="popper.js"></script>
-<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="js/popper.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <!-- mega-menu -->
-<script type="text/javascript" src="mega_menu.js"></script>
+<script type="text/javascript" src="js/mega-menu/mega_menu.js"></script>
 
 <!-- appear -->
-<script type="text/javascript" src="jquery.appear.js"></script>
+<script type="text/javascript" src="js/jquery.appear.js"></script>
 
 <!-- counter -->
-<script type="text/javascript" src="jquery.countTo.js"></script>
+<script type="text/javascript" src="js/counter/jquery.countTo.js"></script>
 
 <!-- isotope -->
-<script type="text/javascript" src="isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="js/isotope/isotope.pkgd.min.js"></script>
 
 <!-- owl-carousel -->
-<script type="text/javascript" src="owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/owl-carousel/owl.carousel.min.js"></script>
 
 <!-- jquery-ui -->
-<script type="text/javascript" src="jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
 
 <!-- select -->
-<script type="text/javascript" src="jquery-select.js"></script>
+<script type="text/javascript" src="js/select/jquery-select.js"></script>
 
 <!-- magnific popup -->
-<script type="text/javascript" src="jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 <!-- custom -->
-<script type="text/javascript" src="custom.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 
 
 <script>
@@ -936,11 +632,17 @@ Have Any Question -->
   }
 
   function card(c){
-    const img = (c.photos&&c.photos[0]) ? esc(c.photos[0]) : "car-01.jpg";
+    const img = (c.photos&&c.photos[0]) ? esc(c.photos[0]) : "images/car/01.jpg";
     const sold = c.status==="sold";
     const msg = "Hi, I'm interested in the "+full(c)+" ("+money(c.price)+"). Is it still available?";
-    const specs = [c.year, c.mileage?Number(c.mileage).toLocaleString("en-GB")+" mi":null,
-                   c.fuel, c.transmission].filter(Boolean);
+    // Only show a spec if it's genuinely present — a blank or unparseable
+    // mileage was showing as "NaN mi".
+    const milesNum = Number(String(c.mileage||"").replace(/[^0-9.]/g,""));
+    const specs = [
+      c.year,
+      (milesNum > 0 && isFinite(milesNum)) ? milesNum.toLocaleString("en-GB")+" mi" : null,
+      c.fuel, c.transmission, c.engine, c.body
+    ].filter(function(x){ return x !== null && x !== undefined && String(x).trim() !== ""; });
     return `<div class="col-lg-4 col-sm-6">
       <div class="car-item vehicle-showcase-6">
         <div class="car-image">
@@ -1027,6 +729,12 @@ document.addEventListener("DOMContentLoaded", function(){
     .replace(/themeforest|Car Express[A-Za-z]*/gi, "Car Express");
 });
 </script>
-<script src="ce-site.js"></script>
+<script src="js/ce-site.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".ce-year").forEach(function(e){ e.textContent = new Date().getFullYear(); });
+});
+</script>
 </body>
 </html>
