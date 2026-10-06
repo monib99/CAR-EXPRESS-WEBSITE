@@ -47,12 +47,12 @@
    ============================================================ */
 window.CE = {
   name: "Car Express",
-  phone: "01442 000000",
-  whatsapp: "447000000000",          // international, no + or spaces
+  phone: "07508 848893",
+  whatsapp: "447508848893",          // international, no + or spaces
   email: "contact@carexpress.co",
   address: ["Fletcher Way", "Hemel Hempstead", "Hertfordshire HP2 5SE"],
   mapsQuery: "Car Express, Fletcher Way, Hemel Hempstead HP2 5SE",
-  hours: "Mon - Sat 9:00 - 18:00 &middot; Sun 10:00 - 16:00",
+  hours: "Mon - Sat 9:00 - 18:00 &middot; Sun 9:00 - 16:00",
   companyLegal: "Car Express Ltd. Registered in England & Wales. Company no. 00000000.",
   social: { facebook:"", instagram:"", tiktok:"", youtube:"" },
   // Live stock published from your management app
@@ -63,11 +63,11 @@ window.CE = {
 
 <style>
 /* ---- Car Express brand overrides ---- */
-:root{ --ce-navy:#17428C; --ce-navy-dark:#0E2E66; --ce-red:#DC2226; }
+:root{ --ce-navy:#1b1c20; --ce-navy-dark:#000; --ce-red:#e10600; }
 .text-primary,.theme-color,a:hover,.item-title a:hover{ color:var(--ce-red)!important; }
 .bg-primary,.button,.btn-primary,.price.car-price,.label.car-condition,
 .search-inventory .button,input[type=submit]{ background-color:var(--ce-red)!important; border-color:var(--ce-red)!important; }
-.button:hover,.btn-primary:hover{ background-color:#B81A1E!important; border-color:#B81A1E!important; }
+.button:hover,.btn-primary:hover{ background-color:#b30500!important; border-color:#b30500!important; }
 .bg-dark,.footer,.topbar,.header-navbar-v2{ background-color:var(--ce-navy-dark)!important; }
 .menu-list-items{ background-color:var(--ce-navy-dark)!important; }
 #logo_img,.footer-logo img{ max-height:46px; width:auto; }
@@ -77,7 +77,7 @@ window.CE = {
 .ce-actions{ display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
 .ce-actions a{ flex:1; min-width:96px; text-align:center; padding:9px 6px; border-radius:4px;
   font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; }
-.ce-chat{ background:#16603F; color:#fff!important; }
+.ce-chat{ background:#e10600; color:#fff!important; }
 .ce-more{ background:var(--ce-navy); color:#fff!important; }
 .ce-empty{ text-align:center; padding:50px 20px; }
 .ce-empty h3{ margin-bottom:10px; }
@@ -116,6 +116,8 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
  "addressRegion":"Hertfordshire","postalCode":"HP2 5SE","addressCountry":"GB"},
  "areaServed":"Hemel Hempstead and surrounding areas"}
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="ce-theme.css" />
 </head>
 
 <body>
@@ -177,7 +179,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
         <!-- menu logo -->
         <ul class="menu-logo">
           <li>
-            <a href="index.html"><img id="logo_img" src="logo-light.png" alt="logo"> </a>
+            <a href="index.html"><img id="logo_img" src="logo-silver.png" alt="logo"> </a>
           </li>
         </ul>
         <!-- menu links -->
@@ -212,8 +214,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
        </div>
        <div class="col-md-6 text-md-end float-end">
          <ul class="page-breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><a href="#">pages</a> <i class="fa fa-angle-double-right"></i></li>
+            <li><a href="index.html"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
             <li><span>details 01</span> </li>
          </ul>
        </div>
@@ -1333,17 +1334,7 @@ car-details  -->
               <li> <span>Drivetrain</span> <strong class="text-end">FWD</strong></li>
             </ul>
           </div>
-          <div class="details-social details-weight">
-            <h5>Share now</h5>
-            <ul>
-              <li><a href="#"> <i class="fa fa-facebook"></i> facebook</a></li>
-              <li><a href="#"> <i class="fa fa-twitter"></i> twitter</a></li>
-              <li><a href="#"> <i class="fa fa-pinterest-p"></i> pinterest</a></li>
-              <li><a href="#"> <i class="fa fa-dribbble"></i> dribbble</a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i> google plus </a></li>
-              <li><a href="#"> <i class="fa fa-behance"></i> behance</a></li>
-            </ul>
-            </div>
+          
             <div class="details-form contact-2 details-weight">
                <form class="gray-form" action="post" id="send_enquiry_form">
                 <h5>SEND ENQUIRY</h5>
@@ -1423,105 +1414,50 @@ car-details -->
 <!--=================================
  footer -->
 
-<footer class="footer bg-3 bg-overlay-black-90">
+<footer class="cx-footer">
   <div class="container">
     <div class="row">
-     <div class="col-md-12">
-      <div class="social">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img class="cx-foot-logo" src="logo-silver.png" alt="Car Express">
+        <p>Quality used cars in Hemel Hempstead. Every car serviced, MOT'd and HPI checked before sale.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6>Visit and contact</h6>
+        <ul class="cx-contact">
+          <li><i class="fa fa-map-marker"></i><span class="ce-address">Fletcher Way<br>Hemel Hempstead<br>Hertfordshire HP2 5SE</span></li>
+          <li><i class="fa fa-phone"></i><a href="tel:07508848893"><span class="ce-phone">07508 848893</span></a></li>
+          <li><i class="fa fa-envelope-o"></i><a href="mailto:contact@carexpress.co"><span class="ce-email">contact@carexpress.co</span></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6>Pages</h6>
         <ul>
-          <li><a class="facebook" href="#">facebook <i class="fa fa-facebook"></i> </a></li>
-          <li><a class="twitter" href="#">twitter <i class="fa fa-twitter"></i> </a></li>
-          <li><a class="pinterest" href="#">pinterest <i class="fa fa-pinterest-p"></i> </a></li>
-          <li><a class="dribbble" href="#">dribbble <i class="fa fa-dribbble"></i> </a></li>
-          <li><a class="google-plus" href="#">google plus <i class="fa fa-google-plus"></i> </a></li>
-          <li><a class="behance" href="#">behance <i class="fa fa-behance"></i> </a></li>
-        </ul>
-       </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <div class="about-content">
-          <img class="img-fluid" id="logo-footer" src="logo-light.png" alt="">
-          <p>We provide everything you need to build an amazing dealership website developed especially for car sellers dealers or auto motor retailers.</p>
-        </div>
-        <div class="address">
-          <ul>
-            <li> <i class="fa fa-map-marker"></i><span>220E Front St. Burlington NC 27215</span> </li>
-            <li> <i class="fa fa-phone"></i><span><span class="ce-phone"></span></span> </li>
-            <li> <i class="fa fa-envelope-o"></i><span><span class="ce-email"></span></span> </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="usefull-link">
-        <h6 class="text-white">Useful Links</h6>
-          <ul>
-            <li><a href="index.html"><i class="fa fa-angle-double-right"></i> Home</a></li><li><a href="stock.html"><i class="fa fa-angle-double-right"></i> Cars For Sale</a></li><li><a href="about.html"><i class="fa fa-angle-double-right"></i> About Us</a></li><li><a href="view360.html"><i class="fa fa-angle-double-right"></i> 360° View</a></li><li><a href="contact.html"><i class="fa fa-angle-double-right"></i> Contact</a></li></ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-       <div class="recent-post-block">
-        <h6 class="text-white">recent posts </h6>
-          <div class="recent-post">
-            <div class="recent-post-image">
-              <img class="img-fluid" src="car-01.jpg" alt="">
-            </div>
-            <div class="recent-post-info">
-                <a href="#">Time to change your </a>
-                <span class="post-date"><i class="fa fa-calendar"></i>September 10, 2021</span>
-            </div>
-         </div>
-         <div class="recent-post">
-            <div class="recent-post-image">
-              <img class="img-fluid" src="car-02.jpg" alt="">
-            </div>
-            <div class="recent-post-info">
-                <a href="#">The best time to </a>
-                <span class="post-date"><i class="fa fa-calendar"></i>September 10, 2021</span>
-            </div>
-         </div>
-         <div class="recent-post">
-            <div class="recent-post-image">
-              <img class="img-fluid" src="car-03.jpg" alt="">
-            </div>
-            <div class="recent-post-info">
-                <a href="#">Replacing a timing </a>
-                <span class="post-date"><i class="fa fa-calendar"></i>September 10, 2021</span>
-            </div>
-         </div>
-       </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="news-letter">
-        <h6 class="text-white">subscribe Our Newsletter </h6>
-         <p>Keep up on our always evolving products features and technology. Enter your e-mail and subscribe to our newsletter.</p>
-         <form class="news-letter">
-           <input type="email" placeholder="Enter your Email" class="form-control placeholder">
-           <a class="button red" href="#">Subscribe</a>
-         </form>
-        </div>
-      </div>
-    </div>
-    <hr />
-    <div class="copyright">
-     <div class="row">
-      <div class="col-lg-6 col-md-12">
-       <div class="text-lg-start text-center">
-        <p>© <span class="ce-year"></span> Car Express. All rights reserved.</p>
-       </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <ul class="list-inline text-lg-end text-center">
-          <li><a href="#">privacy policy </a> | </li>
-          <li><a href="#">terms and conditions </a> |</li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stock.html">Cars for sale</a></li>
+          <li><a href="view360.html">360&deg; view</a></li>
+          <li><a href="faq.html">Common questions</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-     </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6>Opening hours</h6>
+        <p class="ce-hours">Mon - Sat 9:00 - 18:00 &middot; Sun 9:00 - 16:00</p>
+      </div>
     </div>
+    <div class="cx-legal">&copy; <span class="ce-year"></span> Car Express. All rights reserved.</div>
   </div>
 </footer>
+<script>
+(function(){
+  var C = window.CE || {};
+  document.querySelectorAll(".ce-year").forEach(function(e){ e.textContent = new Date().getFullYear(); });
+  document.querySelectorAll("[data-cx-wa]").forEach(function(a){
+    a.href = "https://wa.me/" + (C.whatsapp||"") + "?text=" + encodeURIComponent(a.getAttribute("data-cx-wa"));
+    a.target = "_blank"; a.rel = "noopener";
+  });
+})();
+</script>
 
 <!--=================================
  footer -->

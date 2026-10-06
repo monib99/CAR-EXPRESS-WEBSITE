@@ -51,12 +51,12 @@
    ============================================================ */
 window.CE = {
   name: "Car Express",
-  phone: "01442 000000",
-  whatsapp: "447000000000",          // international, no + or spaces
+  phone: "07508 848893",
+  whatsapp: "447508848893",          // international, no + or spaces
   email: "contact@carexpress.co",
   address: ["Fletcher Way", "Hemel Hempstead", "Hertfordshire HP2 5SE"],
   mapsQuery: "Car Express, Fletcher Way, Hemel Hempstead HP2 5SE",
-  hours: "Mon - Sat 9:00 - 18:00 &middot; Sun 10:00 - 16:00",
+  hours: "Mon - Sat 9:00 - 18:00 &middot; Sun 9:00 - 16:00",
   companyLegal: "Car Express Ltd. Registered in England & Wales. Company no. 00000000.",
   social: { facebook:"", instagram:"", tiktok:"", youtube:"" },
   // Live stock published from your management app
@@ -67,11 +67,11 @@ window.CE = {
 
 <style>
 /* ---- Car Express brand overrides ---- */
-:root{ --ce-navy:#17428C; --ce-navy-dark:#0E2E66; --ce-red:#DC2226; }
+:root{ --ce-navy:#1b1c20; --ce-navy-dark:#000; --ce-red:#e10600; }
 .text-primary,.theme-color,a:hover,.item-title a:hover{ color:var(--ce-red)!important; }
 .bg-primary,.button,.btn-primary,.price.car-price,.label.car-condition,
 .search-inventory .button,input[type=submit]{ background-color:var(--ce-red)!important; border-color:var(--ce-red)!important; }
-.button:hover,.btn-primary:hover{ background-color:#B81A1E!important; border-color:#B81A1E!important; }
+.button:hover,.btn-primary:hover{ background-color:#b30500!important; border-color:#b30500!important; }
 .bg-dark,.footer,.topbar,.header-navbar-v2{ background-color:var(--ce-navy-dark)!important; }
 .menu-list-items{ background-color:var(--ce-navy-dark)!important; }
 #logo_img,.footer-logo img{ max-height:46px; width:auto; }
@@ -81,7 +81,7 @@ window.CE = {
 .ce-actions{ display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
 .ce-actions a{ flex:1; min-width:96px; text-align:center; padding:9px 6px; border-radius:4px;
   font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; }
-.ce-chat{ background:#16603F; color:#fff!important; }
+.ce-chat{ background:#e10600; color:#fff!important; }
 .ce-more{ background:var(--ce-navy); color:#fff!important; }
 .ce-empty{ text-align:center; padding:50px 20px; }
 .ce-empty h3{ margin-bottom:10px; }
@@ -111,15 +111,6 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
   padding:26px 24px!important; border-radius:10px!important; box-shadow:0 14px 44px rgba(0,0,0,.28)!important; }
 .search-block-wrapper .search-block-title{ font-size:22px!important; text-align:left!important; margin-bottom:16px!important; }
 .search-block-wrapper select, .search-block-wrapper .selected-box{ width:100%!important; }
-</style><style>
-#ceHeroRow{ display:flex!important; flex-wrap:wrap!important; align-items:center!important; }
-#ceHeroRow > .col-lg-7{ flex:0 0 56%!important; max-width:56%!important; }
-#ceHeroRow > .col-lg-5{ flex:0 0 44%!important; max-width:44%!important; display:flex; justify-content:flex-end; }
-@media(max-width:991px){
-  #ceHeroRow > .col-lg-7, #ceHeroRow > .col-lg-5{ flex:0 0 100%!important; max-width:100%!important; }
-  #ceHeroRow > .col-lg-5{ justify-content:flex-start; margin-top:26px; }
-  .search-block-wrapper{ max-width:100%!important; }
-}
 </style><meta name="geo.region" content="GB-HRT">
 <meta name="geo.placename" content="Hemel Hempstead">
 <meta name="description" content="Used cars for sale in Hemel Hempstead. Car Express, Fletcher Way, HP2 5SE. Every car serviced, MOT'd and HPI checked before sale. Part exchange welcome, free delivery within 50 miles.">
@@ -129,6 +120,8 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
  "addressRegion":"Hertfordshire","postalCode":"HP2 5SE","addressCountry":"GB"},
  "areaServed":"Hemel Hempstead and surrounding areas"}
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="ce-theme.css" />
 </head>
 
 <body>
@@ -164,7 +157,7 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
                       <!-- menu logo -->
                       <ul class="menu-logo">
                         <li>
-                          <a href="index.html"><img id="logo_img" src="logo-light.png" alt="logo"> </a>
+                          <a href="index.html"><img id="logo_img" src="logo-silver.png" alt="logo"> </a>
                         </li>
                       </ul>
                       <!-- menu links -->
@@ -199,114 +192,59 @@ nav .menu-links > li > a{ display:inline-block!important; padding:12px 0!importa
 
 <!--=================================
  Banner -->
-<section class="banner modern-banner-3 bg-holder bg-overlay-dark-50" style="background-image: url(home3-banner-image.jpg);">
-  <div class="container">
-    <div class="row align-items-center" id="ceHeroRow">
-     <div class="col-lg-7">
-      <div class="banner-content text-white">
-        <h1>Every car ready before it’s advertised</h1>
-        <h5>Quality used cars in Hemel Hempstead</h5>
-        <p>Small economical cars, family cars and SUVs — fully prepared before they reach the forecourt. Part exchange welcome, free delivery within 50 miles.</p>
-
-          <div class="app-button">
-            <a class="button" href="stock.html">View our cars</a>
-            <a class="button" style="background:transparent;border:2px solid #fff;margin-left:10px" href="#ceSearch">Value my car</a>
-            <p class="text-dec" style="margin-top:14px">Every car serviced, MOT'd and HPI checked before sale. <a href="about.html">More about us</a></p>
-          </div>
-     </div>
-     <div class="col-lg-5">
-      <div class="search-block-wrapper">
-          <h5 class="search-block-title">Find Your Dream Car</h5>
-          <div class="row search-block search-block-new">
-            <div class="col-sm-12">
-              <div class="selected-box">
-                <select class="selectpicker">
-                  <option>--Select--</option>
-                 <option>Year</option>
-                 <option>2010</option>
-                 <option>2011</option>
-                 <option>2012</option>
-                 <option>2013</option>
-                 <option>2014</option>
-                 <option>2015</option>
-                 <option>2016</option>
-                 <option>2017</option>
-                 <option>2018</option>
-                </select>
-               </div>
-             </div>
-             <div class="col-sm-12">
-               <div class="selected-box">
-                 <select class="selectpicker">
-                  <option>--Select--</option>
-                 <option>Make </option>
-                 <option>Ferrari</option>
-                 <option>Honda </option>
-                 <option>Hyundai </option>
-                 <option>Nissan </option>
-                 <option>Audi </option>
-                 <option>Bentley</option>
-                 <option>BMW</option>
-                </select>
-               </div>
-             </div>
-             <div class="col-sm-12">
-               <div class="selected-box">
-                <select class="selectpicker">
-                  <option>--Select--</option>
-                 <option>458 Italia</option>
-                 <option>570GT</option>
-                 <option>650S</option>
-                 <option>911 Turbo Cabriolet</option>
-                 <option>A4</option>
-                 <option>A4 Prestige</option>
-                 <option>A7</option>
-                 <option>A7 3.0T Prestige quattro</option>
-                 <option>Bentayga</option>
-                </select>
-              </div>
-             </div>
-           <div class="col-sm-12">
-             <div class="selected-box">
-              <select class="selectpicker">
-                <option>--Select--</option>
-                 <option>Coupe</option>
-                 <option>Hatchback</option>
-                 <option>Sedan</option>
-                 <option>SUV</option>
-                </select>
-              </div>
-           </div>
-           <div class="col-sm-12">
-            <div class="selected-box">
-              <select class="selectpicker">
-                <option>--Select--</option>
-               <option>≤ 10000</option>
-               <option>≤ 20000</option>
-               <option>≤ 30000</option>
-               <option>≤ 40000</option>
-               <option>≤ 50000</option>
-               <option>≤ 60000</option>
-               <option>≤ 70000</option>
-              </select>
-            </div>
-           </div>
-            <div class="col-md-12">
-              <div class="price-slide">
-                <div class="price">
-                    <label class="form-label" for="amount">Price: </label>
-                    <input type="text" id="amount" class="amount" value="£1,000 - £25,000" />       
-                  <div id="slider-range"></div>
-                    <a class="button" href="#">Search Inventory</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-         </div>
-     </div>
-    </div>
+<section class="cx-hero" id="cxHero" aria-roledescription="carousel" aria-label="Car Express highlights">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="cxPaint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f5f7"/><stop offset=".45" stop-color="#c8ccd2"/><stop offset="1" stop-color="#6b7078"/></linearGradient>
+<linearGradient id="cxGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2d33"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient>
+<symbol id="cx-hatch" viewBox="0 0 640 220">
+<path d="M52 166 L52 120 C52 108 60 102 74 100 L150 90 C168 58 200 36 252 32 L384 32 C436 34 470 58 494 92 L566 102 C596 107 606 120 606 142 L606 166 Z" fill="url(#cxPaint)"/>
+<path d="M170 90 C184 64 210 48 252 44 L318 44 L318 90 Z" fill="url(#cxGlass)"/><path d="M330 44 L382 44 C414 46 440 64 460 90 L330 90 Z" fill="url(#cxGlass)"/>
+<path d="M52 112 L68 112 L68 134 L52 134 Z" fill="#e10600"/><path d="M578 114 L606 119 L606 132 L574 126 Z" fill="#fff"/>
+<path d="M74 140 L596 142" stroke="#3a3d43" stroke-width="2" fill="none" opacity=".55"/>
+<circle cx="150" cy="166" r="52" fill="#050506"/><circle cx="492" cy="166" r="52" fill="#050506"/>
+<circle cx="150" cy="166" r="41" fill="#16171a" stroke="#c8ccd2" stroke-width="5"/><circle cx="492" cy="166" r="41" fill="#16171a" stroke="#c8ccd2" stroke-width="5"/>
+<circle cx="150" cy="166" r="17" fill="#8a9099"/><circle cx="492" cy="166" r="17" fill="#8a9099"/>
+<circle cx="150" cy="166" r="5" fill="#e10600"/><circle cx="492" cy="166" r="5" fill="#e10600"/></symbol>
+<symbol id="cx-suv" viewBox="0 0 640 220">
+<path d="M40 168 L40 112 C40 100 48 94 62 92 L116 84 L134 42 C140 32 150 28 162 28 L424 28 C452 30 468 46 484 78 L552 92 C588 100 608 112 610 136 L610 168 Z" fill="url(#cxPaint)"/>
+<path d="M150 80 L164 46 L270 46 L270 80 Z" fill="url(#cxGlass)"/><path d="M282 46 L420 46 C438 48 452 60 464 80 L282 80 Z" fill="url(#cxGlass)"/>
+<path d="M40 108 L56 108 L56 134 L40 134 Z" fill="#e10600"/><path d="M582 116 L610 121 L610 134 L578 128 Z" fill="#fff"/>
+<circle cx="144" cy="168" r="56" fill="#050506"/><circle cx="506" cy="168" r="56" fill="#050506"/>
+<circle cx="144" cy="168" r="44" fill="#16171a" stroke="#c8ccd2" stroke-width="5"/><circle cx="506" cy="168" r="44" fill="#16171a" stroke="#c8ccd2" stroke-width="5"/>
+<circle cx="144" cy="168" r="18" fill="#8a9099"/><circle cx="506" cy="168" r="18" fill="#8a9099"/>
+<circle cx="144" cy="168" r="5" fill="#e10600"/><circle cx="506" cy="168" r="5" fill="#e10600"/></symbol>
+</defs></svg>
+<div class="cx-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+  <div class="container"><div class="cx-row" id="ceHeroRow">
+    <div class="cx-copy banner-content"><h1>Every car ready before it&rsquo;s advertised</h1><h5>Quality used cars in Hemel Hempstead</h5><p>Small economical cars, family cars and SUVs, fully prepared before they reach the forecourt.</p><div class="cx-actions app-button"><a class="button" href="stock.html">View our cars</a><a class="button cx-ghost" href="contact.html">Find the forecourt</a></div></div>
+    <div class="cx-stage"><i class="cx-streak"></i><i class="cx-streak"></i><i class="cx-streak"></i><div class="cx-glow"></div>
+      <div class="cx-art"><svg viewBox="0 0 640 220" role="img" aria-label="Silver car"><use href="#cx-hatch"/></svg></div></div>
+  </div></div></div>
+<div class="cx-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+  <div class="container"><div class="cx-row">
+    <div class="cx-copy"><h1>Free delivery within 50 miles</h1><p>Part exchange welcome. Live further away? Get in touch and ask about delivery.</p><div class="cx-actions"><a class="button" href="stock.html">Browse cars</a><a class="button cx-ghost" href="contact.html">Contact us</a></div></div>
+    <div class="cx-stage"><i class="cx-streak"></i><i class="cx-streak"></i><i class="cx-streak"></i><div class="cx-glow"></div>
+      <div class="cx-art"><svg viewBox="0 0 640 220" role="img" aria-label="Silver car"><use href="#cx-suv"/></svg></div></div>
+  </div></div></div>
+<div class="cx-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+  <div class="container"><div class="cx-row">
+    <div class="cx-copy"><h1>Serviced, MOT&rsquo;d and HPI checked</h1><p>Every car is prepared before sale, so you know what you are buying before you visit.</p><div class="cx-actions"><a class="button" href="about.html">How we prepare cars</a><a class="button cx-ghost" href="stock.html">See what&rsquo;s in stock</a></div></div>
+    <div class="cx-stage"><i class="cx-streak"></i><i class="cx-streak"></i><i class="cx-streak"></i><div class="cx-glow"></div>
+      <div class="cx-art"><svg viewBox="0 0 640 220" role="img" aria-label="Silver car"><use href="#cx-hatch"/></svg></div></div>
+  </div></div></div>
+<div class="cx-controls"><div class="container">
+  <div class="cx-ticks" role="tablist" aria-label="Choose slide">
+    <button class="cx-tick" role="tab" aria-selected="true" data-cx="tick" data-i="0">Our cars</button>
+    <button class="cx-tick" role="tab" aria-selected="false" data-cx="tick" data-i="1">Delivery</button>
+    <button class="cx-tick" role="tab" aria-selected="false" data-cx="tick" data-i="2">Prepared</button>
   </div>
-</div></section>
+  <div class="cx-arrows">
+    <button class="cx-arrow cx-pp" data-cx="pp" aria-label="Pause or play slideshow"><svg class="i-pause" viewBox="0 0 16 16"><rect x="3" y="2" width="3.4" height="12"/><rect x="9.6" y="2" width="3.4" height="12"/></svg><svg class="i-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg></button>
+    <button class="cx-arrow" data-cx="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="cx-arrow" data-cx="next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div></div>
+</section>
 <!--=================================
  Banner -->
 
@@ -353,67 +291,22 @@ section -->
 
 <!--=================================
 clients -->
-<section class="our-partners section-pb">
- <div class="container">
-    <div class="row">
-     <div class="col-md-12">
-       <div class="divider-separator">
-          <span class="separator-1">
-            <span class="separator-line"></span>
-          </span>
-          <h4 class="separator-title">Our Partners &amp; Suppoters</h4>
-          <span class="separator-1">
-            <span class="separator-line"></span>
-          </span>
-        </div>
-     </div>
-    </div>
-  <div class="row">
-     <div class="col-lg-12 col-md-12">
-      <div class="owl-carousel our-clients-carousel" data-nav-dots="false" data-items="5" data-md-items="5" data-sm-items="3" data-xs-items="2" data-space="10">
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-01.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-02.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-03.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-04.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-05.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-06.png" alt="">
-          </div>
-          <div class="item">
-            <img class="img-fluid center-block" src="clients-07.png" alt="">
-          </div>
-       </div>
-     </div>
-   </div>
-  </div>
- </section>
+
  <!--=================================
  clients -->
 
 
  <!--=================================
 Solution & Services -->
-<section class="section-ptb bg-holder bg-overlay-dark-80 position-relative" style="background-image: url(video-bg-image.jpg);">
- <div class="container">
-    <div class="row justify-content-start">
-     <div class="col-md-7">
-      <div class="section-title-new vehicles-volution mb-0">
-        <h2 class="main-title text-white">We Provide Best Vehicles Solution & Services</h2>
-        <p class="text-white mb-0">Small economical cars, family cars and SUVs — fully prepared before they reach the forecourt. Part exchange welcome, free delivery within 50 miles. The Theme has been Created especially for automotive dealers, car resellers, car service stations, mechanic workshop and auto motor retailers.</p>
-      </div>
-     </div>
+<section class="cx-band">
+  <div class="container">
+    <h2 class="cx-h">Why buy from Car Express</h2>
+    <div class="row">
+      <div class="col-md-4"><div class="cx-point"><h3>Prepared before it&rsquo;s advertised</h3><p>Every car is serviced, MOT&rsquo;d and HPI checked before sale.</p></div></div>
+      <div class="col-md-4"><div class="cx-point"><h3>Part exchange welcome</h3><p>Thinking of trading in? Message us about your current car.</p></div></div>
+      <div class="col-md-4"><div class="cx-point"><h3>Free delivery within 50 miles</h3><p>From Hemel Hempstead. Further away? Get in touch and ask.</p></div></div>
     </div>
- </div>
+  </div>
 </section>
  <!--=================================
 Solution & Services -->
@@ -439,117 +332,50 @@ Have Any Question -->
 
 <!--=================================
   footer -->
-  <footer class="footer bg-2 bg-overlay-black-90">
-    <div class="container">
-      <div class="row social-footer">
-        <div class="col-lg-4 col-md-4 col-sm-4 text-center text-md-start">
-          <div class="footer-logo">
-            <a href="#">
-              <img class="img-fluid site-logo" src="logo-light.png" alt="">
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 text-center text-md-end">
-          <div class="social-icon">
-            <ul class="icon-light">
-              <li><a class="facebook" href="http://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="https://dribbble.com/" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-              <li><a class="instagram" href="http://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-              <li><a class="youtube" href="http://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
-            </ul>
-          </div>
-        </div>
+  <footer class="cx-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img class="cx-foot-logo" src="logo-silver.png" alt="Car Express">
+        <p>Quality used cars in Hemel Hempstead. Every car serviced, MOT'd and HPI checked before sale.</p>
       </div>
-      <div class="row mt-5">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
-          <div class="about-content">
-            <h6 class="text-white widgettitle">Contact Information</h6>
-            <p>Quality used cars in Hemel Hempstead. Every car serviced, MOT’d and HPI checked before sale.</p>
-          </div>
-          <div class="address">
-            <ul>
-              <li> <i class="fa-solid fa-location-dot"></i><span>Fletcher Way, Hemel Hempstead, Hertfordshire HP2 5SE</span> </li>
-              <li> <i class="fa fa-phone"></i><span><span class="ce-phone"></span></span> </li>
-              <li> <i class="fa fa-envelope-o"></i><span><span class="ce-email"></span></span> </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
-          <div class="usefull-link widget-link-new">
-            <h6 class="text-white widgettitle">Useful Links</h6>
-            <ul>
-              <li><a href="index.html">Home</a></li><li><a href="stock.html">Cars For Sale</a></li><li><a href="about.html">About Us</a></li><li><a href="view360.html">360° View</a></li><li><a href="contact.html">Contact</a></li></ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
-          <div class="recent-post-block">
-            <h6 class="text-white widgettitle">recent posts </h6>
-            <div class="recent-post">
-              <div class="recent-post-image">
-                <img class="img-fluid" src="car-01.jpg" alt="">
-              </div>
-              <div class="recent-post-info">
-                <a href="#">Time to change your </a>
-                <span class="post-date"><i class="fas fa-calendar-alt"></i>September 10, 2021</span>
-              </div>
-            </div>
-            <div class="recent-post">
-              <div class="recent-post-image">
-                <img class="img-fluid" src="car-02.jpg" alt="">
-              </div>
-              <div class="recent-post-info">
-                <a href="#">The best time to </a>
-                <span class="post-date"><i class="fas fa-calendar-alt"></i>September 10, 2021</span>
-              </div>
-            </div>
-            <div class="recent-post">
-              <div class="recent-post-image">
-                <img class="img-fluid" src="car-03.jpg" alt="">
-              </div>
-              <div class="recent-post-info">
-                <a href="#">Replacing a timing </a>
-                <span class="post-date"><i class="fas fa-calendar-alt"></i>September 10, 2021</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-5">
-          <div class="news-letter">
-            <h6 class="text-white widgettitle">Download App </h6>
-            <p>Download Our Car Dealer Mobile Application.</p>
-            <div class="app-button-items">
-               <div class="button-item">
-                  <a class="" href="#"><img class="img-fluid" src="appstore.png" alt=""></a>
-               </div>
-               <div class="button-item">
-                  <a class="" href="#"><img class="img-fluid" src="google-play-store.png" alt=""></a>
-               </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6>Visit and contact</h6>
+        <ul class="cx-contact">
+          <li><i class="fa fa-map-marker"></i><span class="ce-address">Fletcher Way<br>Hemel Hempstead<br>Hertfordshire HP2 5SE</span></li>
+          <li><i class="fa fa-phone"></i><a href="tel:07508848893"><span class="ce-phone">07508 848893</span></a></li>
+          <li><i class="fa fa-envelope-o"></i><a href="mailto:contact@carexpress.co"><span class="ce-email">contact@carexpress.co</span></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6>Pages</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stock.html">Cars for sale</a></li>
+          <li><a href="view360.html">360&deg; view</a></li>
+          <li><a href="faq.html">Common questions</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h6>Opening hours</h6>
+        <p class="ce-hours">Mon - Sat 9:00 - 18:00 &middot; Sun 9:00 - 16:00</p>
       </div>
     </div>
-
-    <div class="copyright copyright-border">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-12">
-            <div class="text-lg-start text-center">
-              <p>© <span class="ce-year"></span> Car Express. All rights reserved.</p>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12">
-            <ul class="list-inline text-lg-end text-center">
-              <li><a href="#">privacy policy </a></li>
-              <li><a href="#">terms and conditions </a></li>
-              <li><a href="#">contact us </a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <div class="cx-legal">&copy; <span class="ce-year"></span> Car Express. All rights reserved.</div>
+  </div>
+</footer>
+<script>
+(function(){
+  var C = window.CE || {};
+  document.querySelectorAll(".ce-year").forEach(function(e){ e.textContent = new Date().getFullYear(); });
+  document.querySelectorAll("[data-cx-wa]").forEach(function(a){
+    a.href = "https://wa.me/" + (C.whatsapp||"") + "?text=" + encodeURIComponent(a.getAttribute("data-cx-wa"));
+    a.target = "_blank"; a.rel = "noopener";
+  });
+})();
+</script>
   <!--=================================
   footer -->
 
@@ -730,6 +556,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 </script>
 <script src="ce-site.js"></script>
+<script src="ce-hero.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){

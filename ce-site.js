@@ -45,14 +45,7 @@
     }
     if(st.hours) document.querySelectorAll('.ce-hours').forEach(function(e){ e.innerHTML = st.hours; });
     if(st.mapsQuery) C.mapsQuery = st.mapsQuery;
-    if(st.primaryColour || st.darkColour){
-      var css = document.createElement('style');
-      css.textContent =
-        (st.primaryColour ? '.button,.btn-primary,.price.car-price,.bg-primary,.search-inventory .button{background-color:'+st.primaryColour+'!important;border-color:'+st.primaryColour+'!important}'
-          + 'a:hover,.text-primary,.item-title a:hover{color:'+st.primaryColour+'!important}' : '')
-        + (st.darkColour ? '.bg-dark,.footer,.topbar,header nav{background-color:'+st.darkColour+'!important}' : '');
-      document.head.appendChild(css);
-    }
+    /* Colours are set in ce-theme.css (black, red and silver). */
   }
 
   function applyMenu(site){
@@ -76,11 +69,13 @@
 
     if(sl.photo && banner){
       banner.style.backgroundImage =
-        'linear-gradient(rgba(10,20,45,.62),rgba(10,20,45,.72)), url("'+sl.photo+'")';
+        'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.78)), url("'+sl.photo+'")';
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundPosition = 'center';
+      banner.classList.add('cx-has-photo');
     }
     if(sl.videoUrl && banner){
+      banner.classList.add('cx-has-photo');
       var v = document.createElement('video');
       v.src = sl.videoUrl; v.autoplay = true; v.muted = true; v.loop = true; v.playsInline = true;
       v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;';
@@ -125,7 +120,7 @@
              + '<div class="row">'
              + (s.items||[]).map(function(it,i){
                  return '<div class="col-lg-3 col-sm-6 mb-4"><div class="feature-info">'
-                   + (s.type==='steps' ? '<div style="color:var(--ce-red,#DC2226);font-weight:700">Step '+(i+1)+'</div>' : '')
+                   + (s.type==='steps' ? '<div style="color:var(--ce-red,#e10600);font-weight:700">Step '+(i+1)+'</div>' : '')
                    + '<h5>'+esc(it.title||'')+'</h5><p>'+esc(it.text||'')+'</p></div></div>';
                }).join('')
              + '</div></div></section>';
@@ -162,9 +157,9 @@
              + '</div></div></section>';
       }
       else if(s.type==='cta'){
-        html += '<section style="padding:54px 0;background:'+((window.CE.primaryColour)||'#DC2226')+';color:#fff">'
+        html += '<section style="padding:54px 0;background:'+((window.CE.primaryColour)||'#e10600')+';color:#fff">'
              + '<div class="container text-center"><h2 style="color:#fff">'+esc(s.title||'')+'</h2>'
-             + (s.buttonText ? '<a class="button" style="background:#fff;color:#17428C" href="'
+             + (s.buttonText ? '<a class="button" style="background:#fff;color:#000" href="'
                  + ((s.buttonPage==='home')?'index.html':(s.buttonPage||'stock')+'.html')+'">'+esc(s.buttonText)+'</a>' : '')
              + '</div></section>';
       }
