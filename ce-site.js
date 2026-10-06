@@ -67,22 +67,23 @@
     var banner = document.querySelector('#ceHeroRow') ? document.querySelector('#ceHeroRow').closest('section, div[style*="background-image"]') : null;
     if(!banner) banner = document.querySelector('section[style*="background-image"], .banner, .home3-banner');
 
-    if(sl.photo && banner){
-      banner.style.backgroundImage =
-        'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.78)), url("'+sl.photo+'")';
-      banner.style.backgroundSize = 'cover';
-      banner.style.backgroundPosition = 'center';
+    /* Photo or video behind the hero. It sits in its own layer so the theme can
+       turn it black and red (see .hx-photo in ce-theme.css). */
+    if(banner && (sl.photo || sl.videoUrl)){
       banner.classList.add('cx-has-photo');
-    }
-    if(sl.videoUrl && banner){
-      banner.classList.add('cx-has-photo');
-      var v = document.createElement('video');
-      v.src = sl.videoUrl; v.autoplay = true; v.muted = true; v.loop = true; v.playsInline = true;
-      v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;';
-      if(getComputedStyle(banner).position === 'static') banner.style.position = 'relative';
-      banner.insertBefore(v, banner.firstChild);
-      var content = banner.querySelector('.container');
-      if(content){ content.style.position='relative'; content.style.zIndex='2'; }
+      var old = banner.querySelector('.hx-photo'); if(old) old.remove();
+      var layer;
+      if(sl.videoUrl){
+        layer = document.createElement('video');
+        layer.src = sl.videoUrl; layer.autoplay = true; layer.muted = true; layer.loop = true; layer.playsInline = true;
+      } else {
+        layer = document.createElement('div');
+        layer.style.backgroundImage = 'url("'+sl.photo+'")';
+      }
+      layer.className = 'hx-photo';
+      banner.insertBefore(layer, banner.firstChild);
+      var tint = document.createElement('div'); tint.className = 'hx-photo-tint';
+      banner.insertBefore(tint, layer.nextSibling);
     }
     var h1 = document.querySelector('.banner-content h1, #ceHeroRow h1');
     if(h1 && sl.heading) h1.textContent = sl.heading;
