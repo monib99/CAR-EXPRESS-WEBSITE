@@ -49,6 +49,7 @@
   var wa = function(m){ return "https://wa.me/" + cfg().whatsapp + (m ? "?text=" + encodeURIComponent(m) : ""); };
   var KNOWN = {home:"index.html", stock:"stock.html", about:"about.html", contact:"contact.html", faq:"faq.html", view360:"view360.html"};
   function pageHref(id){
+    if(id === "__whatsapp") return wa("Hi, I'd like to ask about a car.");
     if(!id) return "stock.html";
     var p = S.site && S.site.pages.filter(function(x){ return x.id === id; })[0];
     var sl = p ? (p.slug || p.id) : id;
@@ -89,7 +90,7 @@
     }).join("");
     var copy = slides.map(function(sl,i){
       var words = String(sl.heading||"").trim().split(/\s+/).map(function(w,k){ return '<span class="w" style="--i:' + k + '">' + esc(w) + '</span>'; }).join(" ");
-      var btn = sl.buttonText ? '<a class="cx-btn" href="' + pageHref(sl.buttonPage) + '">' + esc(sl.buttonText) + '</a>' : '';
+      var btn = sl.buttonText ? '<a class="cx-btn" ' + (sl.buttonPage === "__whatsapp" ? 'target="_blank" rel="noopener" ' : '') + 'href="' + pageHref(sl.buttonPage) + '">' + esc(sl.buttonText) + '</a>' : '';
       return '<div class="hx-s' + (i===0?' is-active':'') + '"><h1>' + words + '</h1>' +
         (sl.sub ? '<p class="hx-sub">' + esc(sl.sub) + '</p>' : '') + (btn ? '<div class="cx-actions">' + btn + '</div>' : '') + '</div>';
     }).join("");
@@ -172,9 +173,10 @@
       '</div></section>';
   }
   function cta(s){
-    var href = s.whatsapp ? wa("Hi, I'm looking for a car. Can you let me know what's coming in?") : pageHref(s.buttonPage);
+    var isWa = !!(s.whatsapp || s.buttonPage === "__whatsapp");
+    var href = isWa ? wa("Hi, I'm looking for a car. Can you let me know what's coming in?") : pageHref(s.buttonPage);
     return '<section class="cta2" data-sec="cta"><div class="cx-wrap" data-reveal><h2>' + esc(s.title || "") + '</h2>' + (s.text ? '<p>' + esc(s.text) + '</p>' : '') +
-      (s.buttonText ? '<a class="cx-btn" ' + (s.whatsapp ? 'target="_blank" rel="noopener" ' : '') + 'href="' + href + '">' + esc(s.buttonText) + '</a>' : '') + '</div></section>';
+      (s.buttonText ? '<a class="cx-btn" ' + (isWa ? 'target="_blank" rel="noopener" ' : '') + 'href="' + href + '">' + esc(s.buttonText) + '</a>' : '') + '</div></section>';
   }
   var RENDER = {hero:hero, cars:cars, text:text, features:features, steps:steps, gallery:gallery, video:video, reviews:reviews, contact:contact, cta:cta};
 
