@@ -23,7 +23,7 @@
       a.classList.toggle("is-current", t === f || (f === "" && t === "index.html"));
     });
   }
-  markCurrent(); setTimeout(markCurrent, 1200); /* again after the app menu loads */
+  window.CEmark = markCurrent; markCurrent(); setTimeout(markCurrent, 1200);
 
   /* scroll reveal */
   var io = null;

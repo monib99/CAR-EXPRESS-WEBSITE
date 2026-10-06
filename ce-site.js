@@ -51,13 +51,15 @@
   function applyMenu(site){
     var ul = document.querySelector('nav .menu-links');
     if(!ul || !site.menu || !site.menu.length) return;
-    var pageById = {};
+    var pageById = {}, KNOWN = {home:'index.html', stock:'stock.html', about:'about.html', contact:'contact.html', faq:'faq.html', view360:'view360.html'};
     site.pages.forEach(function(p){ pageById[p.id] = p; });
     ul.innerHTML = site.menu.map(function(m){
       var p = pageById[m.page];
-      var href = !p ? '#' : ((p.slug||p.id)==='home' ? 'index.html' : (p.slug||p.id)+'.html');
+      var sl = p ? (p.slug||p.id) : '';
+      var href = !p ? '#' : (KNOWN[sl] || KNOWN[p.id] || ('page.html?p='+encodeURIComponent(sl)));
       return '<li><a href="'+href+'">'+esc(m.label)+'</a></li>';
     }).join('');
+    if(window.CEmark) window.CEmark();
   }
 
   /* Hero: photo, video, heading, sub-heading and button */
@@ -189,6 +191,7 @@
       applySettings(site.settings);
       applyMenu(site);
 
+      if(document.body.classList.contains('cx-dyn')) return;
       var page = matchPage(site);
       if(!page) return;
 
