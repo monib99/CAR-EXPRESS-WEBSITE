@@ -553,3 +553,10 @@ html,body{ overflow-x:hidden; }
 
 /* Zack: no ring */
 .zk-car:after{ content:none !important; display:none !important; }
+
+/* WhatsApp button with label */
+.cx-wa{ width:auto!important; padding:0 22px 0 18px; gap:10px; border-radius:40px!important; display:flex; align-items:center; justify-content:center; }
+.cx-wa:before{ border-radius:40px!important; }
+.cx-wa-t{ color:#fff; font-weight:700; font-size:15px; letter-spacing:.2px; white-space:nowrap; }
+@media(max-width:600px){ .cx-wa{ padding:0 16px 0 13px; } .cx-wa-t{ font-size:14px; } }
+.cx-wa,.cx-wa:hover,.cx-wa-t{ text-decoration:none!important; background-image:none!important; }
