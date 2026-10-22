@@ -335,12 +335,12 @@ input:focus,select:focus,textarea:focus,.form-control:focus{ border-color:var(--
 
 /* ---------- hero photos: always black, white and red ----------
    To show your photos in their natural colours, change --hx-filter to: none  */
-:root{ --hx-filter:grayscale(1) contrast(1.1) brightness(1.1); }
+:root{ --hx-filter:saturate(1.08) contrast(1.05); }
 .hx-photo{ position:absolute; inset:0; z-index:-4; width:100%; height:100%; object-fit:cover; background-size:cover; background-position:center; filter:var(--hx-filter) brightness(.85); }
 .hx-photo-tint{ position:absolute; inset:0; z-index:-3; pointer-events:none; background:linear-gradient(100deg,rgba(0,0,0,.74) 25%,rgba(225,6,0,.36)); }
 .hx-img{ filter:var(--hx-filter); }
-.hx-slide:before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; mix-blend-mode:multiply;
-  background:linear-gradient(105deg,#c4c4c4 5%,#ff4a40); }
+.hx-slide:before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; mix-blend-mode:normal;
+  background:linear-gradient(105deg,rgba(225,6,0,.38) 0%,rgba(225,6,0,.10) 38%,transparent 65%); }
 .hx-info{ z-index:3; }
 
 /* ==========================================================
