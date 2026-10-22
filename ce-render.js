@@ -100,9 +100,8 @@
       '<button class="hx-arrow" data-hs="next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>' : '';
     return '<section class="hx" data-sec="hero"><div class="hx-bg"></div><div class="hx-road"></div><div class="hx-layers">' + layers + '</div>' +
       '<div class="cx-wrap hx-grid"><div class="hx-copy">' + copy + '</div>' +
-      '<div class="hx-visual" id="hxVisual"><div class="hx-frame" id="hxFrame"><div class="hx-fallback"><i class="hx-streak"></i><i class="hx-streak"></i><i class="hx-streak"></i>' +
-      '<img class="hx-logo" src="logo-silver.png" alt="Car Express" width="820" height="232"></div></div><div class="hx-ctrl" id="hxCtrl"></div></div></div>' +
-      ticks + '<div class="hx-scroll" aria-hidden="true"></div></section>' + MARQUEE;
+      '<div class="hx-visual" id="hxVisual"><div class="hx-frame" id="hxFrame"></div><div class="hx-ctrl" id="hxCtrl"></div></div></div>' +
+      ticks + '<div class="hx-scroll" aria-hidden="true"></div></section>';
   }
   var MQ_ITEMS = ["Serviced","MOT\u2019d","HPI checked","Part exchange welcome","Free delivery within 50 miles","Quality used cars in Hemel Hempstead"];
   var MARQUEE = '<div class="mq" aria-hidden="true"><div class="mq-track">' + [1,2,3,4].map(function(){ return MQ_ITEMS.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join(""); }).join("") + '</div></div>';
@@ -178,7 +177,11 @@
     return '<section class="cta2" data-sec="cta"><div class="cx-wrap" data-reveal><h2>' + esc(s.title || "") + '</h2>' + (s.text ? '<p>' + esc(s.text) + '</p>' : '') +
       (s.buttonText ? '<a class="cx-btn" ' + (isWa ? 'target="_blank" rel="noopener" ' : '') + 'href="' + href + '">' + esc(s.buttonText) + '</a>' : '') + '</div></section>';
   }
-  var RENDER = {hero:hero, cars:cars, text:text, features:features, steps:steps, gallery:gallery, video:video, reviews:reviews, contact:contact, cta:cta};
+  function ticker(s){
+    var items = (s && s.lines && s.lines.length) ? s.lines : MQ_ITEMS;
+    return '<div class="mq" data-sec="ticker" aria-hidden="true"><div class="mq-track">' + [1,2,3,4].map(function(){ return items.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join(""); }).join("") + '</div></div>';
+  }
+  var RENDER = {ticker:ticker, hero:hero, cars:cars, text:text, features:features, steps:steps, gallery:gallery, video:video, reviews:reviews, contact:contact, cta:cta};
 
   /* ---------- behaviour ---------- */
   var hs = { i:0, n:0, timer:null };
@@ -206,7 +209,7 @@
   function buildCarSlider(){
     var host = $("#hxFrame"); if(!host) return;
     var withPhoto = avail().filter(function(c){ return c.photos && c.photos[0]; }).slice(0,5);
-    if(!withPhoto.length) return;
+    if(!withPhoto.length){ var hv = $("#hxVisual"); if(hv) hv.style.display = "none"; var hg = $(".hx-grid"); if(hg) hg.style.gridTemplateColumns = "1fr"; return; }
     host.innerHTML = withPhoto.map(function(c,k){
       var miles = Number(String(c.mileage||"").replace(/[^0-9.]/g,""));
       var spec = [c.variant, c.year, miles>0 ? miles.toLocaleString("en-GB")+" mi" : null, c.fuel, c.transmission].filter(Boolean).join("  \u00B7  ");
@@ -243,32 +246,37 @@
 
   /* cars section: finder and cards */
   function card(c,i){
-    var img = (c.photos && c.photos[0]) ? esc(c.photos[0]) : "car-01.jpg";
+    var hasImg = !!(c.photos && c.photos[0]), img = hasImg ? esc(c.photos[0]) : "logo-silver.png";
     var miles = Number(String(c.mileage||"").replace(/[^0-9.]/g,""));
     var specs = [c.year, (miles>0 && isFinite(miles)) ? miles.toLocaleString("en-GB")+" mi" : null, c.fuel, c.transmission, c.engine]
       .filter(function(x){ return x !== null && x !== undefined && String(x).trim() !== ""; });
     var msg = "Hi, I'm interested in the " + full(c) + " (" + money(c.price) + "). Is it still available?";
     var url = "car.html?id=" + encodeURIComponent(c.id);
     return '<article class="cx-card" style="--i:' + i + '"><a class="pic" href="' + url + '"><span class="tag">' + money(c.price) + '</span>' +
-      '<img src="' + img + '" alt="' + esc(full(c)) + '" loading="lazy"></a><div class="body">' +
+      '<img class="' + (hasImg ? "" : "noimg") + '" src="' + img + '" alt="' + esc(full(c)) + '" loading="lazy"></a><div class="body">' +
       (c.body ? '<div class="kind">' + esc(c.body) + '</div>' : '') + '<h3>' + esc(title(c)) + '</h3>' + (c.variant ? '<div class="var">' + esc(c.variant) + '</div>' : '') +
       '<ul class="specs">' + specs.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' +
       '<div class="acts"><a class="cx-btn sm" target="_blank" rel="noopener" href="' + wa(msg) + '">Enquire</a><a class="cx-btn sm ghost" href="' + url + '">Details</a></div></div></article>';
   }
   function initCars(sec, s){
-    var all = avail(), st = {body:"all", max:0, ceil:0};
+    var all = avail(), st = {body:"all", max:0, ceil:0}, stockCount = all.length, chosen = false;
     var limit = s.showAll === false ? 0 : (Number(s.limit) || 6);
+    if(s.mode === "pick" && s.pick && s.pick.length){
+      var byId = {}; all.forEach(function(c){ byId[String(c.id)] = c; });
+      var picked = s.pick.map(function(id){ return byId[String(id)]; }).filter(Boolean);
+      if(picked.length){ all = picked; chosen = true; limit = 0; }
+    }
     var grid = $(".cars-grid", sec), meta = $(".cars-meta", sec), chipsEl = $(".hx-chips", sec), range = $(".f-price", sec), out = $(".f-out", sec), bar = $(".finder-bar", sec);
     var tot = $(".cars-total", sec);
-    if(tot){ if(all.length){ window.CEcount && window.CEcount(tot, all.length); } else { tot.parentNode.style.display = "none"; } }
+    if(tot){ if(stockCount){ window.CEcount && window.CEcount(tot, stockCount); } else { tot.parentNode.style.display = "none"; } }
     var bodies = {}; all.forEach(function(c){ if(c.body) bodies[c.body] = 1; });
     var keys = Object.keys(bodies).sort();
-    if(!all.length || (keys.length < 2 && !all.some(function(c){ return Number(c.price) > 0; }))) bar.style.display = "none";
+    if(chosen || !all.length || (keys.length < 2 && !all.some(function(c){ return Number(c.price) > 0; }))) bar.style.display = "none";
     chipsEl.innerHTML = ["all"].concat(keys).map(function(b){ return '<button class="hx-chip" data-body="' + esc(b) + '" aria-pressed="' + (b==="all") + '">' + (b==="all" ? "All cars" : esc(b)) + '</button>'; }).join("");
     if(keys.length < 2) chipsEl.style.display = "none";
     var top = all.reduce(function(m,c){ return Math.max(m, Number(c.price)||0); }, 0);
     st.ceil = top ? Math.ceil(top/1000)*1000 : 0;
-    if(st.ceil){ range.min = 1000; range.max = st.ceil; range.value = st.ceil; range.disabled = false; } else bar.style.display = "none";
+    if(chosen){ bar.style.display = "none"; } else if(st.ceil){ range.min = 1000; range.max = st.ceil; range.value = st.ceil; range.disabled = false; } else bar.style.display = "none";
     function draw(){
       var list = all.filter(function(c){ return (st.body === "all" || c.body === st.body) && (!st.max || Number(c.price) <= st.max); });
       if(!all.length){
@@ -276,7 +284,7 @@
         meta.innerHTML = ""; return;
       }
       var shown = limit ? list.slice(0, limit) : list;
-      meta.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + list.length + '</b> matching ' + (list.length === 1 ? 'car' : 'cars');
+      meta.innerHTML = chosen ? "" : 'Showing <b>' + shown.length + '</b> of <b>' + list.length + '</b> matching ' + (list.length === 1 ? 'car' : 'cars');
       grid.innerHTML = shown.length ? shown.map(card).join("") :
         '<div class="cars-empty"><h3>Nothing matches that yet</h3><p>Try a different type or a higher price, or tell us what you want and we\u2019ll look out for it.</p><a class="cx-btn" target="_blank" rel="noopener" href="' + wa("Hi, I'm looking for a car. Can you let me know what's coming in?") + '">Message us</a></div>';
     }
@@ -340,6 +348,10 @@
     if(!sections){
       if(slug !== "home"){ main.innerHTML = '<section class="sx"><div class="cx-wrap"><div class="txt2"><h2>Page not found</h2><p>We couldn\u2019t find that page. <a href="index.html">Go to the homepage</a>.</p></div></div></section>'; return; }
       sections = defaultSections();
+    }
+    if(slug === "home" && !sections.some(function(s){ return s.type === "ticker"; })){
+      var hi = -1; sections.forEach(function(s,i){ if(s.type === "hero" && hi < 0) hi = i; });
+      sections = sections.slice(); sections.splice(hi + 1, 0, {type:"ticker", visible:true});
     }
     var html = "", hasHero = false;
     sections.forEach(function(s){ if(s.type === "hero") hasHero = true; });
