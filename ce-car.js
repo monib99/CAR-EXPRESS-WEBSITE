@@ -35,7 +35,7 @@
     var miles = Number(String(c.mileage||"").replace(/[^0-9.]/g,""));
     var specs = [c.year, miles>0 ? miles.toLocaleString("en-GB")+" mi" : null, c.fuel, c.transmission, c.engine].filter(Boolean);
     return '<article class="cx-card" style="--i:' + i + '"><a class="pic" href="' + url + '"><span class="tag">' + money(c.price) + '</span>' +
-      (has360(c) ? '<span class="has360">360\u00B0</span>' : '') + '<img src="' + img + '" alt="' + esc(full(c)) + '" loading="lazy"' + (!c.photos||!c.photos[0] ? ' style="object-fit:contain;padding:24px"' : '') + '></a>' +
+      (has360(c) ? '<span class="has360">360\u00B0</span>' : '') + ((c.photos && c.photos[0]) ? '<img src="' + img + '" alt="' + esc(full(c)) + '" loading="lazy">' : (window.CEcover ? window.CEcover(c) : '<img src="logo-silver.png" alt="" style="object-fit:contain;padding:24px">')) + '</a>' +
       '<div class="body">' + (c.body ? '<div class="kind">' + esc(c.body) + '</div>' : '') + '<h3>' + esc(title(c)) + '</h3>' + (c.variant ? '<div class="var">' + esc(c.variant) + '</div>' : '') +
       '<ul class="specs">' + specs.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' +
       '<div class="acts"><a class="cx-btn sm" href="' + url + '">' + (href ? 'Turn it 360\u00B0' : 'View car') + '</a></div></div></article>';
