@@ -699,3 +699,17 @@ html,body{ overflow-x:hidden; }
 .cx-side a:hover svg{ position:absolute; right:12px; }
 .cx-side a:hover span{ opacity:1!important; transform:translate(0,-50%)!important; transition:opacity .25s .1s,transform .3s .1s; }
 .cx-side a:hover{ box-shadow:inset 3px 0 0 #fff; }
+
+/* questions page */
+.faq2 .sx-head p{ max-width:40em; }
+.faq-g{ margin-bottom:26px; }
+.faq-g h3{ font-size:26px; color:var(--cx-red); margin:0 0 10px; }
+.faq2 details{ background:var(--cx-card); border:1px solid var(--cx-line); border-left:3px solid transparent; margin-bottom:8px; transition:border-color .25s,background .25s; }
+.faq2 details[open]{ border-left-color:var(--cx-red); background:var(--cx-card-2); }
+.faq2 summary{ list-style:none; cursor:pointer; padding:16px 54px 16px 20px; font:600 17px var(--cx-body); color:#fff; position:relative; }
+.faq2 summary::-webkit-details-marker{ display:none; }
+.faq2 summary i{ position:absolute; right:20px; top:50%; width:14px; height:14px; transform:translateY(-50%); }
+.faq2 summary i:before,.faq2 summary i:after{ content:""; position:absolute; left:0; right:0; top:50%; height:2px; background:var(--cx-red); transition:transform .3s var(--cx-ease); }
+.faq2 summary i:after{ transform:rotate(90deg); }
+.faq2 details[open] summary i:after{ transform:rotate(0); }
+.faq2 details p{ margin:0; padding:0 22px 18px 20px; color:var(--cx-silver); line-height:1.6; max-width:52em; }

@@ -192,7 +192,49 @@
     var items = (s && s.lines && s.lines.length) ? s.lines : MQ_ITEMS;
     return '<div class="mq" data-sec="ticker" aria-hidden="true"><div class="mq-track">' + [1,2,3,4].map(function(){ return items.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join(""); }).join("") + '</div></div>';
   }
-  var RENDER = {ticker:ticker, hero:hero, cars:cars, text:text, features:features, steps:steps, gallery:gallery, video:video, reviews:reviews, contact:contact, cta:cta};
+  var FAQ = [
+    ["Buying a car", [
+      ["Can I reserve a car before I come and see it?","Yes. A deposit of \u00a3200 holds any car for seven days and comes off the price when you buy. If you change your mind after seeing it, the deposit is returned in full. We would rather you bought the right car than the one you put a deposit on."],
+      ["Do I need an appointment?","No, you are welcome to turn up. But if you have seen a particular car online, a quick call or message means we can have it out, clean and ready rather than parked in behind three others."],
+      ["Can I take it for a test drive?","Yes, on every car. Bring your driving licence. If you want a longer run than a lap of the estate, tell us beforehand and we will sort it out."],
+      ["Will you take my car in part exchange?","Almost always. Send us the registration and mileage and we will give you a figure before you travel, so you know where you stand. The figure stands as long as the car is as described."]]],
+    ["Price, finance and payment", [
+      ["Is the price negotiable?","Our prices are set against live market data, so they start keen rather than inflated to leave room for haggling. That said, we are a small independent, so talk to us."],
+      ["Do you offer finance?","Yes, through established lenders, including options for people with less than perfect credit. We can run an indicative check without affecting your credit file so you know what is realistic before applying properly."],
+      ["What payment methods do you take?","Bank transfer is simplest and clears fastest. We also take debit cards, and cash for part of the balance. We do not take credit cards for the full value of a vehicle."],
+      ["Is there an admin fee?","There is a \u00a399 administration charge on most sales, which covers the paperwork, the HPI check and registering the change of keeper. It is shown on the invoice rather than hidden in the price."]]],
+    ["After you buy", [
+      ["What warranty comes with the car?","Every car includes a warranty as standard, and longer cover can be bought at the point of sale. The exact term depends on the age and mileage of the vehicle. We will tell you plainly what is covered and what is not before you commit."],
+      ["Is the car MOT\u2019d and serviced?","Every car is serviced, MOT\u2019d and HPI checked before it is advertised. If something needs doing, it is done before the car goes on sale, not promised afterwards."],
+      ["Can you deliver the car to me?","Yes, anywhere in the UK, for a charge based on distance. Most local deliveries around Hertfordshire and Bedfordshire are free."],
+      ["What if something goes wrong in the first few weeks?","Ring us. We would far rather sort a problem out than have an unhappy customer. Anything covered by the warranty we will handle; anything that is our mistake we will put right regardless."]]]
+  ];
+  function faq(s){
+    var c = cfg();
+    return '<section class="sx faq2" data-sec="faq"><div class="cx-wrap">' +
+      '<div class="sx-head" data-reveal><div><h2>' + esc(s.title || "The things people ask most") + '</h2><p>If your question is not here, ring us on ' + esc(c.phone) + ' or message us on WhatsApp. We would rather answer it now than have you drive over and find out.</p></div></div>' +
+      FAQ.map(function(g){
+        return '<div class="faq-g" data-reveal><h3>' + esc(g[0]) + '</h3>' + g[1].map(function(q){
+          return '<details><summary>' + esc(q[0]) + '<i></i></summary><p>' + esc(q[1]) + '</p></details>';
+        }).join("") + '</div>';
+      }).join("") + '</div></section>';
+  }
+  var DEFAULTS = {
+    about: {name:"About us", sections:[
+      {type:"text", title:"A used car dealership on Fletcher Way", body:"Car Express sells quality used cars from Hemel Hempstead. Most of our stock is small, economical cars, with family cars and SUVs alongside them.\n\nEvery car is serviced, MOT\u2019d and HPI checked before it is advertised. We welcome part exchange, and we offer free delivery within 50 miles."},
+      {type:"features", title:"What you can expect", items:[
+        {title:"Prepared first", text:"Serviced, MOT\u2019d and HPI checked before the car is advertised."},
+        {title:"Small and economical", text:"Mostly small cars, with family cars and SUVs too."},
+        {title:"Part exchange", text:"Message us about the car you have now."},
+        {title:"Delivery", text:"Free within 50 miles. Further away, get in touch and ask."}]},
+      {type:"cta", title:"See what\u2019s in stock", text:"New stock arrives most weeks.", buttonText:"View our cars", buttonPage:"stock"}]},
+    contact: {name:"Contact us", sections:[
+      {type:"contact", title:"Get in touch"}]},
+    faq: {name:"Common questions", sections:[
+      {type:"faq"},
+      {type:"cta", title:"Still not sure about something?", text:"Ask us before you travel. No pressure, and no one will chase you afterwards.", buttonText:"Message us on WhatsApp", whatsapp:true}]}
+  };
+  var RENDER = {faq:faq, ticker:ticker, hero:hero, cars:cars, text:text, features:features, steps:steps, gallery:gallery, video:video, reviews:reviews, contact:contact, cta:cta};
 
   /* ---------- behaviour ---------- */
   var hs = { i:0, n:0, timer:null };
@@ -405,10 +447,12 @@
       if(!pg && slug === "home") pg = site.pages[0];
       if(pg){ sections = (pg.sections || []).filter(function(s){ return s.visible !== false; }); pageName = pg.name || ""; }
     }
+    if((!sections || !sections.length) && DEFAULTS[slug]){ sections = DEFAULTS[slug].sections; pageName = pageName || DEFAULTS[slug].name; }
     if(!sections){
-      if(slug === "stock"){ sections = [{type:"cars", title:"Cars for sale", showAll:false, limit:0}]; pageName = "Cars for sale"; }
+      if(DEFAULTS[slug]){ sections = DEFAULTS[slug].sections; pageName = DEFAULTS[slug].name; }
+      else if(slug === "stock"){ sections = [{type:"cars", title:"Cars for sale", showAll:false, limit:0}]; pageName = "Cars for sale"; }
       else if(slug !== "home"){ main.innerHTML = '<section class="sx"><div class="cx-wrap"><div class="txt2"><h2>Page not found</h2><p>We couldn\u2019t find that page. <a href="index.html">Go to the homepage</a>.</p></div></div></section>'; return; }
-      if(slug !== "stock") sections = defaultSections();
+      if(slug !== "stock" && !DEFAULTS[slug]) sections = defaultSections();
     }
     if(slug === "stock") sections = sections.map(function(x){ return x.type === "cars" ? Object.assign({}, x, {limit:0, showAll:false, mode:"auto"}) : x; });
     if(slug === "home" && !sections.some(function(s){ return s.type === "ticker"; })){
