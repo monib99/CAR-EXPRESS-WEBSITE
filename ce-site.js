@@ -34,6 +34,7 @@
       document.querySelectorAll('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+st.phone.replace(/[^\d+]/g,''); });
     }
     if(st.whatsapp) C.whatsapp = st.whatsapp;
+    if(st.social && typeof st.social === 'object'){ C.social = Object.assign({}, C.social || {}, st.social); }
     if(st.email){
       C.email = st.email;
       document.querySelectorAll('.ce-email').forEach(function(e){ e.textContent = st.email; });

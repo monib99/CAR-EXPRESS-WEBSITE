@@ -305,19 +305,26 @@
     gear:'<circle cx="6" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><path d="M6 6.6V17.4M12 6.6V17.4M18 6.6V12H6"/>',
     engine:'<path d="M3 10v6M6 8h3l2-2h5v3h2v-1h3v8h-3v-1h-2v3H8l-2-2v-2H3"/>',
     body:'<path d="M3 15v-3l2-5h14l2 5v3zM3 15v2h3v-2M18 15v2h3v-2"/><circle cx="7.5" cy="12.5" r=".8"/><circle cx="16.5" cy="12.5" r=".8"/>',
+    owner:'<circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3.2-6.4 7-6.4s7 2.4 7 6.4"/>',
+    service:'<path d="M14.5 5.5a4 4 0 0 0-5 5L4 16l4 4 5.5-5.5a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5z"/>',
+    mot:'<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
     colour:'<path d="M12 3c4 4.5 6 7.5 6 10.5a6 6 0 0 1-12 0C6 10.5 8 7.5 12 3z"/>'
   };
   var si = function(k){ return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + SI[k] + '</svg>'; };
+  function ownersTxt(o){ var n = String(o==null?"":o).trim(); if(!n) return ""; if(/^\d+$/.test(n)) return n === "1" ? "1 previous owner" : n + " previous owners"; return n; }
+  function motTxt(m){ var d = new Date(m); if(!m || isNaN(d)) return ""; return "MOT until " + d.toLocaleDateString("en-GB",{month:"short",year:"numeric"}); }
   function specList(c){
     var miles = Number(String(c.mileage||"").replace(/[^0-9.]/g,""));
-    var eng = c.engine ? String(c.engine) : "";
     var out = [];
     if(c.year) out.push(["year", c.year]);
     if(miles > 0 && isFinite(miles)) out.push(["miles", miles.toLocaleString("en-GB") + " miles"]);
     if(c.fuel) out.push(["fuel", c.fuel]);
     if(c.transmission) out.push(["gear", c.transmission]);
-    if(eng) out.push(["engine", eng]);
-    if(c.body) out.push(["body", c.body + (c.doors ? " · " + c.doors + " door" : "")]);
+    var ow = ownersTxt(c.owners); if(ow) out.push(["owner", ow]);
+    if(c.serviceHistory) out.push(["service", c.serviceHistory]);
+    if(c.engine) out.push(["engine", String(c.engine)]);
+    if(c.body) out.push(["body", c.body + (c.doors ? " \u00b7 " + c.doors + " door" : "")]);
+    var mt = motTxt(c.motExpiry); if(mt) out.push(["mot", mt]);
     if(c.colour) out.push(["colour", c.colour]);
     return out;
   }
@@ -328,14 +335,28 @@
     var cut = d.slice(0, n), sp = cut.lastIndexOf(" ");
     return (sp > n*0.6 ? cut.slice(0, sp) : cut).replace(/[,.;:\-\s]+$/,"") + "…";
   }
+  var CLOTH = '<svg class="cv-car" viewBox="0 0 300 140" aria-hidden="true"><defs>' +
+    '<linearGradient id="clA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fa"/><stop offset=".38" stop-color="#b9bec6"/><stop offset=".72" stop-color="#737982"/><stop offset="1" stop-color="#3b3f46"/></linearGradient>' +
+    '<linearGradient id="clB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".62" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>' +
+    '<radialGradient id="clS" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+    '<linearGradient id="clR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8ccd2" stop-opacity=".28"/><stop offset="1" stop-color="#c8ccd2" stop-opacity="0"/></linearGradient></defs>' +
+    '<ellipse cx="150" cy="122" rx="138" ry="9" fill="url(#clS)"/>' +
+    '<path d="M18 116 C12 112 22 100 34 96 C42 80 62 70 92 62 C108 42 134 30 164 30 C196 30 218 44 232 62 C262 68 284 84 284 106 C290 110 288 116 282 118 L18 118 Z" fill="url(#clR)" transform="translate(0,238) scale(1,-1.0)" opacity=".0"/>' +
+    '<path d="M16 117 C10 113 20 102 32 98 C40 82 60 71 90 63 C106 43 132 31 163 31 C196 31 219 45 233 63 C263 69 286 85 286 107 C292 111 290 118 283 119 C268 123 252 117 238 121 C222 125 208 118 192 122 C176 126 162 119 146 123 C130 127 116 119 100 122 C84 125 70 119 56 122 C40 125 28 119 16 117 Z" fill="url(#clA)"/>' +
+    '<path d="M16 117 C10 113 20 102 32 98 C40 82 60 71 90 63 C106 43 132 31 163 31 C196 31 219 45 233 63 C263 69 286 85 286 107 C292 111 290 118 283 119 C268 123 252 117 238 121 C222 125 208 118 192 122 C176 126 162 119 146 123 C130 127 116 119 100 122 C84 125 70 119 56 122 C40 125 28 119 16 117 Z" fill="url(#clB)"/>' +
+    '<g fill="none" stroke-linecap="round">' +
+    '<path d="M60 117 C62 100 74 84 96 68" stroke="#fff" stroke-opacity=".55" stroke-width="1.4"/><path d="M64 118 C68 102 80 88 102 72" stroke="#000" stroke-opacity=".25" stroke-width="1.6"/>' +
+    '<path d="M120 121 C122 96 132 62 150 40" stroke="#fff" stroke-opacity=".6" stroke-width="1.3"/><path d="M126 122 C128 98 138 66 156 42" stroke="#000" stroke-opacity=".22" stroke-width="1.5"/>' +
+    '<path d="M176 122 C176 100 184 66 198 46" stroke="#fff" stroke-opacity=".5" stroke-width="1.3"/><path d="M182 122 C184 100 192 70 206 50" stroke="#000" stroke-opacity=".28" stroke-width="1.5"/>' +
+    '<path d="M232 120 C236 104 244 86 258 76" stroke="#fff" stroke-opacity=".4" stroke-width="1.2"/><path d="M238 121 C244 106 252 92 266 80" stroke="#000" stroke-opacity=".28" stroke-width="1.4"/>' +
+    '<path d="M36 112 C48 104 70 98 96 96" stroke="#000" stroke-opacity=".2" stroke-width="1.4"/>' +
+    '<path d="M104 52 C124 40 146 36 166 37 C190 38 210 48 224 62" stroke="#fff" stroke-opacity=".7" stroke-width="2"/></g>' +
+    '<ellipse cx="150" cy="48" rx="38" ry="6" fill="#fff" opacity=".22"/></svg>';
   function cover(c){
-    return '<div class="cover" role="img" aria-label="Photos coming soon for ' + esc(full(c)) + '"><i class="cv-glow"></i><img class="cv-logo" src="logo-silver.png" alt="" loading="lazy">' +
-      '<svg class="cv-car" viewBox="0 0 240 90" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
-      '<path d="M10 66c0-8 3-12 12-14l26-6c14-18 30-22 46-22h48c20 1 34 14 46 24l28 5c9 2 14 6 14 14v3H10z"/><path d="M62 28l-8 18h56V26zM116 26v20h62c-8-9-18-18-30-20z"/>' +
-      '<circle cx="58" cy="68" r="13"/><circle cx="58" cy="68" r="5"/><circle cx="186" cy="68" r="13"/><circle cx="186" cy="68" r="5"/></svg>' +
-      '<span class="cv-t">Photos coming soon</span><span class="cv-s">' + esc([c.make, c.model].filter(Boolean).join(" ")) + '</span></div>';
+    return '<div class="cover" role="img" aria-label="Photos coming soon for ' + esc(full(c)) + '">' +
+      '<span class="cv-mk">' + makeBadge(c.make) + '</span><img class="cv-car" src="cover-car.webp" alt="" loading="lazy">' +
+      '<span class="cv-t">Photos coming soon</span><span class="cv-s">We\u2019re preparing this vehicle ready for you</span></div>';
   }
-  window.CEcover = cover;
   function card(c,i){
     var hasImg = !!(c.photos && c.photos[0]), img = hasImg ? esc(c.photos[0]) : "logo-silver.png";
     var sp = specList(c), sold = c.status === "sold";

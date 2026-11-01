@@ -83,7 +83,7 @@
       : (car.video ? '<div class="cp-video"><video src="' + esc(car.video) + '" controls playsinline></video></div>' : '');
 
     var miles = Number(String(car.mileage||"").replace(/[^0-9.]/g,""));
-    var specs = [["Year",car.year],["Mileage",miles>0?miles.toLocaleString("en-GB")+" miles":null],["Fuel",car.fuel],["Gearbox",car.transmission],["Engine",car.engine],["Body",car.body],["Doors",car.doors]].filter(function(x){ return x[1]; });
+    var specs = [["Year",car.year],["Mileage",miles>0?miles.toLocaleString("en-GB")+" miles":null],["Fuel",car.fuel],["Gearbox",car.transmission],["Engine",car.engine],["Body",car.body],["Doors",car.doors],["Colour",car.colour],["Previous owners",car.owners],["Service history",car.serviceHistory],["MOT until",car.motExpiry && !isNaN(new Date(car.motExpiry)) ? new Date(car.motExpiry).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}) : null]].filter(function(x){ return x[1] !== null && x[1] !== undefined && String(x[1]).trim() !== ""; });
     var desc = String(car.description||"").split(/\n\s*\n/).filter(Boolean).map(function(p){ return '<p>' + esc(p).replace(/\n/g,"<br>") + '</p>'; }).join("");
     var others = cars.filter(function(c){ return String(c.id) !== String(car.id) && c.status !== "sold"; }).slice(0,3);
 
